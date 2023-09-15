@@ -1,11 +1,22 @@
 <template>
-    <div>
-
-    </div>
+  <div :class="[picked ? 'hp-minifig--picked' : '', 'hp-minifig']">
+    <img class="hp-minifig__image" :src="figure.set_img_url" />
+    <span class="hp-minifig__name">{{ figure.name }}</span>
+    <span class="hp-minifig__cta">Show details</span>
+  </div>
 </template>
 
 <script setup lang="ts">
-
+import type { Minifig } from '@/models/minifig'
+import { defineProps } from 'vue'
+const { figure, picked } = defineProps<{
+  figure: Minifig,
+  picked: boolean
+}>()
 </script>
 
-<style scoped></style>
+<style>
+.hp-minifig--picked {
+box-shadow: orange 10px;
+}
+</style>
