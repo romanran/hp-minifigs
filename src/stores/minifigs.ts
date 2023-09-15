@@ -1,12 +1,13 @@
-import { ref, computed } from 'vue'
+import { ref, computed, type Ref } from 'vue'
 import { defineStore } from 'pinia'
+import { getRandomMinifigs } from '@/services/minifigs/Minifigs'
+import type { Minifig } from '@/models/minifig'
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
+export const useMinifigStore = defineStore('minifig', () => {
+  const minifigs: Ref<Minifig[]> = ref([])
+  async function fetchMifinigs() {
+    minifigs.value = await getRandomMinifigs(3)
   }
 
-  return { count, doubleCount, increment }
+  return { minifigs, fetchMifinigs }
 })
