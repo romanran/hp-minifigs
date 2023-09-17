@@ -1,17 +1,11 @@
 import type { Minifig, MinifigApiResponse } from '@/models/minifig'
 import { FetchFactory } from '../middleware/FetchFactory'
+import { config } from './config'
+import { randomNumber } from '../helpers/helpers'
 
-const config = {
-  baseUrl: ' https://rebrickable.com',
-  apiUrl: '/api/v3/lego/minifigs/',
-  params: '?key=4943a720673cc07cb4b53beab9fa8f61'
-}
+const minifigsApi = new FetchFactory(`${config.baseUrl}${config.minifigsPath}${config.params}`)
+const minifigPartsApi = new FetchFactory('')
 
-const minifigsApi = new FetchFactory(`${config.baseUrl}${config.apiUrl}${config.params}`)
-
-function randomNumber(min: number, max: number) {
-  return Math.random() * (max - min) + min
-}
 const cacheKey = 'HPMinifigs'
 
 async function fetchMinifigs() {
@@ -40,4 +34,9 @@ export async function getRandomMinifigs(numberOfFigures: number): Promise<Minifi
     pickedFigures.push(getRandomFigure())
   }
   return pickedFigures
+}
+
+export async function getMinifigParts(set_num: number) {
+  minifigPartsApi.setUrl(`${config.baseUrl}${config.getPartsApiUrl(set_num)}${config.params}`)
+  const response = await minifigPartsApi.get()
 }

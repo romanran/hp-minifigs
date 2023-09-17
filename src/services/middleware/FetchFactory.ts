@@ -16,4 +16,7 @@ export class FetchFactory {
     }
   }
   post(params?: Params) {}
+  setUrl(url: string) {
+    this.url = url
+  }
 }
