@@ -19,11 +19,11 @@ const router = createRouter({
     {
       path: '/form',
       name: ROUTINGS.FORM,
-      component: () => import('../views/HPFormView.vue'),
-      beforeEnter: (to, from) => {
-        const minifigStore = useMinifigStore()
-        return !!minifigStore.pickedFigure ? true : { name: ROUTINGS.PICKER }
-      }
+      component: () => import('../views/HPFormView.vue')
+      // beforeEnter: (to, from) => {
+      //   const minifigStore = useMinifigStore()
+      //   return !!minifigStore.pickedFigure ? true : { name: ROUTINGS.PICKER }
+      // }
     }
   ]
 })
