@@ -9,7 +9,8 @@ export class FetchFactory {
   }
   async get(params?: Params): Promise<unknown> {
     try {
-      const response = await fetch(this.url, params)
+      const url = params ? this.url + '?' + new URLSearchParams(params).toString() : this.url
+      const response = await fetch(url)
       return response.json()
     } catch (err) {
       console.log(err)
