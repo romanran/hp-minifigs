@@ -11,7 +11,9 @@
       <div class="my-6">There are {{ parts?.length }} parts in this minifig:</div>
       <HPPart v-for="part in parts" :part="part"></HPPart>
     </v-card-item>
-    <v-btn class="mt-10 bg-primary" size="large" block :loading="submitting || false" @click="submit">SUBMIT</v-btn>
+    <v-btn class="mt-10 bg-primary" size="large" block :disabled="!formValid" :loading="submitting || false" @click="submit"
+      >SUBMIT</v-btn
+    >
   </v-card>
 </template>
 
@@ -26,7 +28,7 @@ import HPPart from './HPPart.vue'
 const checkoutStore = useCheckoutStore()
 const minifigStore = useMinifigStore()
 const { parts, pickedFigure } = storeToRefs(minifigStore)
-const { submitting } = storeToRefs(checkoutStore)
+const { submitting, formValid } = storeToRefs(checkoutStore)
 minifigStore.getParts()
 
 function submit() {

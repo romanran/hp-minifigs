@@ -9,7 +9,7 @@ function isValidEmail(email: string) {
 function isValidPhone(phoneNumber: string) {
   return typeof phoneNumber === 'string' && new RegExp(/^[+\d]\d{8,12}$/).test(phoneNumber)
 }
-const onlyLetters = /^[A-Za-z]+$/
+const onlyLetters = /^[\p{L}\s-]+$/u
 
 export const rules = {
   [CheckoutFormKeys.NAME]: [
@@ -34,7 +34,12 @@ export const rules = {
       return isValidEmail(value) || 'Invalid e-mail'
     }
   ],
-  [CheckoutFormKeys.BIRTH_DATE]: [],
+  [CheckoutFormKeys.BIRTH_DATE]: [
+    async (value: string) => {
+      value = value.trim()
+      return /^(19|20)[0-9]{2}([ -]?)(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$/.test(value) || 'Invalid date'
+    }
+  ],
   [CheckoutFormKeys.ADDRESS]: [],
   [CheckoutFormKeys.CITY]: [
     async (value: string) => {
