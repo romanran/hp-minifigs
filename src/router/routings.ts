@@ -1,5 +1,5 @@
 export const ROUTINGS = {
-    LANDING: 'landing',
-    FORM: 'form',
-    PICKER: 'picker',
+  LANDING: 'landing',
+  FORM: 'form',
+  PICKER: 'picker'
 }

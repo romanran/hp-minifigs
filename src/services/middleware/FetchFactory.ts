@@ -18,7 +18,7 @@ export class FetchFactory {
   }
   async post(params?: Params): Promise<unknown> {
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+      const response = await fetch(this.url, {
         ...params,
         method: 'POST',
         headers: {

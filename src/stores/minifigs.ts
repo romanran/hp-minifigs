@@ -5,7 +5,7 @@ import type { Minifig } from '@/models/minifig'
 import type { MinifigPart } from '@/services/minifigs/helpers'
 
 export const useMinifigStore = defineStore('minifig', () => {
-  const pickedFigureCache = localStorage.getItem('pickedFigure')
+  const pickedFigureCache = localStorage.getItem('pickedFigure') && false
 
   const minifigs = ref<Minifig[]>([])
   const pickedFigure = ref<Minifig>(pickedFigureCache ? JSON.parse(pickedFigureCache) : null)

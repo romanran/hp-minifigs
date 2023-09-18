@@ -22,6 +22,7 @@ import { storeToRefs } from 'pinia'
 
 import { useMinifigStore } from '@/stores/minifigs'
 import { useCheckoutStore } from '@/stores/checkout'
+import { notEmpty } from '@/services/helpers/helpers'
 
 import HPPart from './HPPart.vue'
 
@@ -32,7 +33,8 @@ const { submitting, formValid } = storeToRefs(checkoutStore)
 minifigStore.getParts()
 
 function submit() {
-  checkoutStore.submitForm()
+  const mappedPartsIds = parts.value?.map((part) => part?.id).filter(notEmpty)
+  checkoutStore.submitForm(mappedPartsIds || [])
 }
 </script>
 

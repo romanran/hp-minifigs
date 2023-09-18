@@ -2,8 +2,10 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { CheckoutForm } from '@/models/checkoutForm'
 import { FetchFactory } from '@/services/middleware/FetchFactory'
+import router from '@/router'
+import { ROUTINGS } from '@/router/routings'
 
-const formApi = new FetchFactory('api/order/submit')
+const formApi = new FetchFactory('https://jsonplaceholder.typicode.com/posts')
 
 export const useCheckoutStore = defineStore('checkout', () => {
   const form = ref<CheckoutForm>()
@@ -12,10 +14,15 @@ export const useCheckoutStore = defineStore('checkout', () => {
   function setForm(formData: CheckoutForm) {
     form.value = formData
   }
-  function submitForm() {
+  async function submitForm(parts: string[]) {
+    const payload = {
+      form: form.value,
+      parts
+    }
     submitting.value = true
-    formApi.post({ body: JSON.stringify(form.value) })
-    // submitting.value = false
+    await formApi.post({ body: JSON.stringify(payload) })
+    submitting.value = false
+    router.push({ name: ROUTINGS.LANDING })
   }
   return { form, setForm, submitForm, submitting, formValid }
 })

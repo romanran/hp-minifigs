@@ -19,7 +19,9 @@ import type { useCounterStore } from '@/stores/minifigs';
       </v-container>
     </v-item-group>
 
-    <v-btn class="bg-primary" size="x-large" :to="ROUTINGS.FORM" :disabled="!pickedFigure">Proceed to shipment</v-btn>
+    <v-btn class="bg-primary" size="x-large" :to="{ name: ROUTINGS.FORM }" :disabled="!pickedFigure"
+      >Proceed to shipment</v-btn
+    >
   </div>
 </template>
 

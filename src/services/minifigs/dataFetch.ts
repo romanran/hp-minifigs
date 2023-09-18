@@ -26,7 +26,7 @@ function validateApiResponse(response: unknown): response is { results: unknown[
 }
 
 async function fetchMinifigs() {
-  const cachedFigs = localStorage.getItem(cacheKey)
+  const cachedFigs = localStorage.getItem(cacheKey) && false
   let minifigs: Minifig[]
   if (cachedFigs) {
     minifigs = JSON.parse(cachedFigs).results
