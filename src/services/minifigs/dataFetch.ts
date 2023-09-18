@@ -10,8 +10,6 @@ const minifigPartsApi = new FetchFactory('')
 const cacheKey = 'HPMinifigs'
 
 function validateApiResponse(response: unknown): response is { results: unknown[] } {
-  console.log(response)
-
   if (!(response instanceof Object)) {
     throw new Error('Bad api response - no response')
   }
@@ -61,7 +59,5 @@ export async function getMinifigParts(set_num: string) {
   const response = await minifigPartsApi.get({ key: config.params.key })
   if (!validateApiResponse(response)) return
   const mappedParts = response.results.map(mapPart)
-  console.log({ mappedParts })
-
   return mappedParts
 }

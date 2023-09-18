@@ -16,7 +16,20 @@ export class FetchFactory {
       console.log(err)
     }
   }
-  post(params?: Params) {}
+  async post(params?: Params): Promise<unknown> {
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        ...params,
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      return response.json()
+    } catch (err) {
+      console.log(err)
+    }
+  }
   setUrl(url: string) {
     this.url = url
   }

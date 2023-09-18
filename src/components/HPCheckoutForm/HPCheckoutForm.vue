@@ -1,5 +1,5 @@
 <template>
-  <v-form @change="onFormChange">
+  <v-form v-model="formValid" @change="onFormChange">
     <v-container class="px-0">
       <v-row v-for="row in form">
         <v-col v-for="col in row">
@@ -20,9 +20,11 @@
 import type { CheckoutForm } from '@/models/checkoutForm'
 import { useForm, type FieldType } from './composables/form'
 import { useCheckoutStore } from '@/stores/checkout'
+import { storeToRefs } from 'pinia'
 
 const { form } = useForm()
 const store = useCheckoutStore()
+const { formValid } = storeToRefs(store)
 
 function mapForm(accumulator: Partial<CheckoutForm>, field: FieldType) {
   accumulator[field.key as keyof CheckoutForm] = field.model.value
