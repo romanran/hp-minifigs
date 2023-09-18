@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Lego';
+  font-style: bold;
+  src:
+    local(''),
+    url('@/assets/fonts/Legothick.woff2') format('woff2'),
+    url('@/assets/fonts/Legothick.woff') format('woff'),
+    url('@/assets/fonts/Legothick.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Dense';
+  src:
+    local(''),
+    url('@/assets/fonts/Dense-Regular.woff2') format('woff2'),
+    url('@/assets/fonts/Dense-Regular.woff') format('woff'),
+    url('@/assets/fonts/Dense-Regular.ttf') format('truetype');
+}

@@ -1,0 +1,6 @@
+@use 'vuetify/styles' with (
+  // $color-pack: false,
+  $body-font-family: (Dense, Roboto, Arial, sans-serif),
+  $heading-font-family: (Lego, Verdana, monospace),
+  $font-size-root: 24px
+);

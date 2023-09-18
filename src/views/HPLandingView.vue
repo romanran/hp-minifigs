@@ -1,13 +1,12 @@
 <template>
-    <div>
-        <h1>Lego minifigs mystery box</h1>
-        <HPButton :to="ROUTINGS.PICKER">Let's go!</HPButton>
-    </div>
+  <div class="mx-auto d-flex align-center flex-column">
+    <h1 class="text-uppercase mb-10 text-h1">Lego minifigs mystery box</h1>
+    <v-btn class="bg-primary" size="x-large" :to="ROUTINGS.PICKER">Let's go!</v-btn>
+  </div>
 </template>
 
 <script setup lang="ts">
-import HPButton from '@/components/common/HPButton.vue'
-import { ROUTINGS } from '@/router/routings';
+import { ROUTINGS } from '@/router/routings'
 </script>
 
 <style scoped></style>

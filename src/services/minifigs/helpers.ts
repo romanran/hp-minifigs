@@ -12,7 +12,7 @@ export function mapPart(data: unknown) {
   } else {
     return null
   }
-  const mappedPart: { id: string; image?: string; num?: string; url?: string } = { id: data.id }
+  const mappedPart: { id: string; image?: string; num?: string; url?: string; name?: string } = { id: `${data.id}` }
   if ('part_img_url' in part && typeof part.part_img_url === 'string') {
     mappedPart.image = part.part_img_url
   }
@@ -21,6 +21,9 @@ export function mapPart(data: unknown) {
   }
   if ('part_url' in part && typeof part.part_url === 'string') {
     mappedPart.url = part.part_url
+  }
+  if ('name' in part && typeof part.name === 'string') {
+    mappedPart.name = part.name
   }
   return mappedPart
 }

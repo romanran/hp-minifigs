@@ -1,6 +1,6 @@
 <template>
   <v-form @change="onFormChange">
-    <v-container>
+    <v-container class="px-0">
       <v-row v-for="row in form">
         <v-col v-for="col in row">
           <v-text-field
@@ -18,8 +18,6 @@
 
 <script setup lang="ts">
 import type { CheckoutForm } from '@/models/checkoutForm'
-import { VForm } from 'vuetify/components/VForm'
-import { VTextField } from 'vuetify/components/VTextField'
 import { useForm, type FieldType } from './composables/form'
 import { useCheckoutStore } from '@/stores/checkout'
 
