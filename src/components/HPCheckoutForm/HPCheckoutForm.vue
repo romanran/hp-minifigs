@@ -1,6 +1,6 @@
 <template>
   <v-form @change="onFormChange">
-    <v-container>
+    <v-container class="px-0">
       <v-row v-for="row in form">
         <v-col v-for="col in row">
           <v-text-field

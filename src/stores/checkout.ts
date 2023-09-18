@@ -4,8 +4,13 @@ import type { CheckoutForm } from '@/models/checkoutForm'
 
 export const useCheckoutStore = defineStore('checkout', () => {
   const form = ref<CheckoutForm>()
+  const submitting = ref<null | boolean>(null)
   function setForm(formData: CheckoutForm) {
     form.value = formData
   }
-  return { form, setForm }
+  function submitForm() {
+    submitting.value = true
+    // submitting.value = false
+  }
+  return { form, setForm, submitForm, submitting }
 })

@@ -3,7 +3,8 @@
     <v-container>
       <v-row>
         <v-col>
-          <HPCheckoutForm class="w-50"></HPCheckoutForm>
+          <h1 class="text-uppercase text-h3">Shipping details</h1>
+          <HPCheckoutForm></HPCheckoutForm>
         </v-col>
         <v-col>
           <HPSummary></HPSummary>

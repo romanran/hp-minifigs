@@ -1,19 +1,37 @@
 <template>
-  <div>
-    <h1>Summary</h1>
-    <img class="hp-minifig__image" :src="pickedFigure?.set_img_url" />
-    <HPPart v-for="part in parts" :part="part"></HPPart>
-  </div>
+  <v-card theme="light" variant="elevated">
+    <v-card-title>
+      <h2 class="text-uppercase text-center text-h3">Summary</h2>
+    </v-card-title>
+    <v-card-item class="text-center">
+      <v-img class="hp-minifig__image" :src="pickedFigure?.set_img_url" height="200" />
+      <h3 class="font-weight-bold">{{ pickedFigure.name }}</h3>
+    </v-card-item>
+    <v-card-item class="my-2">
+      <div class="my-6">There are {{ parts?.length }} parts in this minifig:</div>
+      <HPPart v-for="part in parts" :part="part"></HPPart>
+    </v-card-item>
+    <v-btn class="mt-10 bg-primary" size="large" block :loading="submitting || false" @click="submit">SUBMIT</v-btn>
+  </v-card>
 </template>
 
 <script setup lang="ts">
-import { useMinifigStore } from '@/stores/minifigs'
 import { storeToRefs } from 'pinia'
+
+import { useMinifigStore } from '@/stores/minifigs'
+import { useCheckoutStore } from '@/stores/checkout'
+
 import HPPart from './HPPart.vue'
 
-const store = useMinifigStore()
-const { parts, pickedFigure } = storeToRefs(store)
-store.getParts()
+const checkoutStore = useCheckoutStore()
+const minifigStore = useMinifigStore()
+const { parts, pickedFigure } = storeToRefs(minifigStore)
+const { submitting } = storeToRefs(checkoutStore)
+minifigStore.getParts()
+
+function submit() {
+  checkoutStore.submitForm()
+}
 </script>
 
 <style lang="scss"></style>
