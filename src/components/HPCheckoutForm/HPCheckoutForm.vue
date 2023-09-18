@@ -3,7 +3,13 @@
     <v-container>
       <v-row v-for="row in form">
         <v-col v-for="col in row">
-          <v-text-field v-model="col.model.value" :label="col.label" :type="col.type" required></v-text-field>
+          <v-text-field
+            v-model="col.model.value"
+            :label="col.label"
+            :type="col.type"
+            :rules="col.rules"
+            required
+          ></v-text-field>
         </v-col>
       </v-row>
     </v-container>

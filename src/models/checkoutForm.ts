@@ -4,7 +4,7 @@ export enum CheckoutFormKeys {
   PHONE = 'phone_number',
   EMAIL = 'email',
   BIRTH_DATE = 'birth_date',
-  ADRESS = 'adress',
+  ADDRESS = 'address',
   CITY = 'city',
   STATE = 'state',
   ZIP = 'zip_code'
@@ -16,7 +16,7 @@ export type CheckoutForm = {
   [CheckoutFormKeys.PHONE]: string
   [CheckoutFormKeys.EMAIL]: string
   [CheckoutFormKeys.BIRTH_DATE]: string
-  [CheckoutFormKeys.ADRESS]: string
+  [CheckoutFormKeys.ADDRESS]: string
   [CheckoutFormKeys.CITY]: string
   [CheckoutFormKeys.STATE]: string
   [CheckoutFormKeys.ZIP]: string

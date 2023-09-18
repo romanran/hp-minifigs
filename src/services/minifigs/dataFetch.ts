@@ -4,7 +4,7 @@ import { config } from './config'
 import { randomNumber } from '../helpers/helpers'
 import { mapPart } from './helpers'
 
-const minifigsApi = new FetchFactory(`${config.baseUrl}${config.minifigsPath}${config.params}`)
+const minifigsApi = new FetchFactory(`${config.baseUrl}${config.minifigsPath}`)
 const minifigPartsApi = new FetchFactory('')
 
 const cacheKey = 'HPMinifigs'
@@ -33,7 +33,7 @@ async function fetchMinifigs() {
   if (cachedFigs) {
     minifigs = JSON.parse(cachedFigs).results
   } else {
-    let response = await minifigsApi.get()
+    let response = await minifigsApi.get(config.params)
     if (!validateApiResponse(response)) return
     localStorage.setItem(cacheKey, JSON.stringify(response))
     minifigs = response.results as Minifig[]
@@ -57,8 +57,8 @@ export async function getRandomMinifigs(numberOfFigures: number): Promise<Minifi
 }
 
 export async function getMinifigParts(set_num: string) {
-  minifigPartsApi.setUrl(`${config.baseUrl}${config.getPartsApiUrl(set_num)}${config.params}`)
-  const response = await minifigPartsApi.get()
+  minifigPartsApi.setUrl(`${config.baseUrl}${config.getPartsApiUrl(set_num)}`)
+  const response = await minifigPartsApi.get({ key: config.params.key })
   if (!validateApiResponse(response)) return
   const mappedParts = response.results.map(mapPart)
   console.log({ mappedParts })
