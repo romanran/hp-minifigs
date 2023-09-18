@@ -3,8 +3,8 @@
     <div class="d-flex align-center">
       <v-img class="mr-5" :src="props.part?.image" width="70" />
       <div class="d-flex flex-column">
-        <div class="text-primary">{{ props.part?.name }}</div>
-        <div class="text-secondary">{{ props.part?.num }}</div>
+        <div class="text-primary text-body-2">{{ props.part?.name }}</div>
+        <div class="text-secondary text-body-2">{{ props.part?.num }}</div>
       </div>
     </div>
   </div>
