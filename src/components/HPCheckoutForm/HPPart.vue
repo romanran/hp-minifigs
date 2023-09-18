@@ -1,9 +1,9 @@
 <template>
   <div>
-    <img class="hp-minifig__image" :src="props.part.image" />
+    <img class="hp-minifig__image" :src="props.part?.image" />
     <div>
-      <span>{{ props.part.name }}</span>
-      <span>{{ props.part.num }}</span>
+      <span>{{ props.part?.name }}</span>
+      <span>{{ props.part?.num }}</span>
     </div>
   </div>
 </template>

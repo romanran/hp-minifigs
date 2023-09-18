@@ -18,8 +18,6 @@
 
 <script setup lang="ts">
 import type { CheckoutForm } from '@/models/checkoutForm'
-import { VForm } from 'vuetify/components/VForm'
-import { VTextField } from 'vuetify/components/VTextField'
 import { useForm, type FieldType } from './composables/form'
 import { useCheckoutStore } from '@/stores/checkout'
 

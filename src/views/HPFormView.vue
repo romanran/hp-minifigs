@@ -1,8 +1,16 @@
 <template>
-  <div class="w-100 mx-auto">
-    <HPCheckoutForm class="w-50"></HPCheckoutForm>
-    <HPSummary></HPSummary>
-  </div>
+  <v-item-group class="mb-4">
+    <v-container>
+      <v-row>
+        <v-col>
+          <HPCheckoutForm class="w-50"></HPCheckoutForm>
+        </v-col>
+        <v-col>
+          <HPSummary></HPSummary>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-item-group>
 </template>
 
 <script setup lang="ts">

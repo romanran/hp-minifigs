@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import { useMinifigStore } from '@/stores/minifigs'
 import { storeToRefs } from 'pinia'
-import HPPart from '../common/HPPart.vue'
+import HPPart from './HPPart.vue'
 
 const store = useMinifigStore()
 const { parts, pickedFigure } = storeToRefs(store)
